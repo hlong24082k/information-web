@@ -6,9 +6,6 @@ const User = require("../models/User");
 router.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        console.log(username);
-
         const user = await User.findOne({ username: username });
 
         if (!user) {
@@ -19,7 +16,6 @@ router.post("/login", async (req, res) => {
             res.status(200).json({ message: 'success' });
         }
     } catch (err) {
-        console.log(err);
         res.status(500).json({ error: err.message });
     }
 })
